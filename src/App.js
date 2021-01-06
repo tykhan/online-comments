@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { CommentForm } from './components/CommentForm/CommentForm';
+import { CommentsList } from './components/CommentsList/CommentsList';
+
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
 
 function App() {
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    getComments();
+  }, []);
+
+  const getComments = async() => {
+    await axios.get(API_URL)
+      .then(res => setComments(res.data))
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CommentForm setComments={setComments} />
+      <CommentsList comments={comments} />
+    </>
   );
 }
 
