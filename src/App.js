@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { CommentForm } from './components/CommentForm/CommentForm';
 import { CommentsList } from './components/CommentsList/CommentsList';
 
-const API_URL = '/api';
+const API_URL = process.env.REACT_APP_API_URL;
 
 function App() {
   const [comments, setComments] = useState([]);
