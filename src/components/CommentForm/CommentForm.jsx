@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import uuid from 'react-uuid';
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const CommentForm = ({ setComments }) => {
   const [commentAuthor, setCommentAuthor] = useState('');

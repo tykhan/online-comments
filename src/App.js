@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+
 import { CommentForm } from './components/CommentForm/CommentForm';
 import { CommentsList } from './components/CommentsList/CommentsList';
 
@@ -12,8 +13,8 @@ function App() {
     getComments();
   }, []);
 
-  const getComments = async() => {
-    await axios.get(API_URL)
+  const getComments = () => {
+    axios.get(API_URL)
       .then(res => setComments(res.data))
   }
 
